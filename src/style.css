@@ -1,8 +1,45 @@
 body {
   color: #0d0d52;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background-color: lightcyan;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+img {
+  animation-duration: 700ms;
+  animation-name: dance;
+  animation-iteration-count: infinite;
+}
+
+@keyframes dance {
+  0% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(1deg);
+  }
+}
+
+.hearts,
+.spades,
+.diamonds,
+.clubs {
+  position: absolute;
+  fill: red;
+  width: 200px;
+  display: none;
+}
+
+.suit-placeholder {
+  position: absolute;
+  fill: black;
+  width: 200px;
+}
+
+.visible {
+  display: inline-block;
 }

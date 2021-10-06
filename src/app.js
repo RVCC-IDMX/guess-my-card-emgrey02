@@ -18,10 +18,33 @@ import './style.css';
 
 const farewell = document.querySelector('.farewell');
 const suits = ['hearts', 'spades', 'diamonds', 'clubs'];
+const placeholder = document.querySelector('.suit-placeholder');
+const displaySuit = (selection) => {
+  const suit = document.querySelector(`.${selection}`);
+  suit.classList.add('visible');
+  placeholder.style.display = 'none';
+};
+const removeSuit = () => {
+  const allSuits = document.querySelectorAll('.suit');
+  allSuits.forEach((suit) => {
+    if (suit.classList.contains('visible')) {
+      suit.classList.remove('visible');
+    }
+  });
+  placeholder.style.display = 'inline-block';
+};
 
 while (confirm('Would you like to play the game?')) {
-  // Put your code in this while loop
-  // Remember to use prompt and alert
+  const index = getRandomInt(0, 4);
+  const selection = suits[index];
+  const guess = prompt('Guess what suit this card is');
+  displaySuit(selection);
+  if (guess.toLowerCase() === selection) {
+    alert(`You got it! The suit is ${selection}.`);
+  } else {
+    alert(`You lost. The suit is ${selection}.`);
+  }
+  removeSuit();
 }
 
 farewell.innerHTML = '<h1>Thanks for playing!<h1>';
